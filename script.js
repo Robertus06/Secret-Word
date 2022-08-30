@@ -393,12 +393,15 @@ btnReplay.addEventListener("click", function (event) {
     finishMenu.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
     selectPlayers.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
     playerNames.length = 0;
+    playerWords.length = 0;
 });
 
 var btnExit = document.getElementById("btnExit");
 btnExit.addEventListener("click", function (event) {
     finishMenu.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
     mainMenu.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+    playerNames.length = 0;
+    playerWords.length = 0;
 });
 
 var btnInstructions = document.getElementById("btnInstructions");
