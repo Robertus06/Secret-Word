@@ -1,15 +1,3 @@
-#game {
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    width: 35%;
-    height: 80%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgb(24, 24, 24);
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 *{
@@ -20,38 +8,54 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
-    gap: 30px;
     background: #222;
 }
 
-#instructions .inputBox {
-    position: relative;
-    width: 200px;
-}
-
-#instructions {
-    display: flex;
+.game {
+    position: absolute;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-
-#players {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-#buttons {
-    position: absolute;
-    bottom: 5%;
+    width: 35vw;
+    height: 80vh;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(-50%, -50%);
+
+    /*
+    border-color: red;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+@media screen and (max-width: 736px) {
+    #game {
+        width: 95vw;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    #game {
+        width: 95vw;
+    }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1320px) {
+    #game {
+        width: 65vw;
+    }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1620px) {
+    #game {
+        width: 65vw;
+    }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1880px) {
+    #game {
+        width: 35vw;
+    }
 }
 
 ::-webkit-scrollbar {
@@ -73,35 +77,287 @@ body {
     background: #222;
 }
 
-#players {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    height: 50%;
-    overflow: hidden;
-    overflow-y: scroll;
-}
-
-#players p, #instructions p, #buttons p {
-    position: relative;
-    width: 80%;
-    left: 0;
+p {
     padding: 30px 0 5px;
     color: rgba(255, 255, 255, 0.5);
     text-align: center;
     letter-spacing: 0.1em;
 }
 
+h1 {
+    padding: 5px 0 5px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 4.5rem;
+}
+
+/* ------------------------- Button Zone ------------------------- */
+
+#buttons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.btn, .btnConfirm {
+    border: none;
+    padding: 0.7rem 2.7rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    border-radius: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    position: relative;
+}
+
+.btn {
+    background: #20e3b2;
+}
+
+.btnConfirm {
+    background: #E32051;
+}
+
+.btn::before, .btnConfirm::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.btn::before {
+    background: #29ffc6;
+}
+
+.btnConfirm::before {
+    background: #FF2962;
+}
+
+.btn:active::before, .btnConfirm:active::before {
+    animation: ripple 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes ripple {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ------------------------- Main Menu ------------------------- */
+
+#titlePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#mainMenu {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#explicationDiv, #instructionsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 85%;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#instructionsDiv {
+    justify-content: flex-start;
+}
+
+.explication, #instructionsGame {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+/* ------------------------- Select Players ------------------------- */
+
+#selectPlayers {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#instructions {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 35%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#players {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: 0% 5%;
+
+    /*
+    border-color: violet;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
 #line {
+    margin-bottom: 30px;
     height: 2px;
     width: 85%;
     background: rgba(255, 255, 255, 0.5);
 }
 
+#titlePage #line {
+    height: 5px;
+    background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69);
+    animation: animateMain 2s linear infinite;
+}
+
+@keyframes animateMain {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 35rem;
+    }
+}
+
+.input-container {
+    width: 15em;
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    transition: all 0.2s;
+    padding: 0 0.1em;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1.1em;
+}
+
+.num-input {
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+    border: 0.15em solid #29ffc6;
+    background: #272530;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    outline: none;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+.label::before {
+    content: '';
+    height: 1em;
+    left: -0.1em;
+    background: #272530;
+    position: absolute;
+    width: 105%;
+    z-index: -1;
+}
+
+.num-input:focus {
+    border: 0.15em solid #0cebeb;
+}
+
+.num-input:focus + .label, .filled {
+    top: -0.6em;
+    color: #0cebeb;
+    font-size: 0.9em;
+}
+
+.num-input::placeholder {
+    font-size: 0.9em;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.num-input:focus::placeholder {
+    opacity: 1;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+
+
+
+
+
+
 .inputBox {
     position: relative;
-    width: 400px;
+    width: 25em;
 }
 
 .inputBox input {
@@ -165,6 +421,101 @@ body {
         background-position-x: 0;
     }
     100% {
-        background-position-x: 400px;
+        background-position-x: 25em;
     }
+}
+
+/* ------------------------- Game ------------------------- */
+
+#whoPlayer, #whoWriter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#showPlayer, #showWriter {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#wordDiv, #impostorDiv, #clockDiv, #writeDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#clockDiv {
+    height: 100%;
+}
+
+#showWord, #showImpostor, #timeGame, #writeWord {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+/* ------------------------- Finish Menu ------------------------- */
+
+#finishPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#finishMenu {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
 }
