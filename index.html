@@ -17,7 +17,7 @@
                     <p>Juega al conocido juego Little Secret 
                         sin necesidad de un narrador <br><br>
                         Deja que la App se encargue de todo, para que ninguno 
-                        de tus amigos se quede mirando como el resto os divertis
+                        de tus amigos se quede mirando como el resto os divertís
                     </p>
                     <br>
                     <button id="btnInstructions" class="btnConfirm">Como se juega</button>
@@ -30,64 +30,111 @@
             <div id="instructionsGame" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="instructionsDiv">
                     <h1 style="color: #20e3b2; font-size: 3rem;">Instrucciones</h1>
-                    <p style="padding-top: 10px; margin: 0 20px;">Secret Word es un juego donde <b style="color: #b6b6b6;">hay una palabra
+                    <h1 style="font-size: 1.5rem; color: #b6b6b6;">Preparación de partida</h1>
+                    <p style="padding-top: 10px; margin: 0 20px;">
+                        Secret Word es un juego donde <b style="color: #b6b6b6;">hay una palabra
                         oculta que todos los jugadores conocen, excepto a uno que será el impostor</b>
                         y tendrá que intentar adivinar la palabra de la que se está hablando para no ser descubierto
                         <br><br>
                         Antes de comenzar partida la App solicitará el número de jugadores, el juego está preparado
-                        para jugarse de 4 (mínimo) a 15 (máximo) personas. Además se puede asignar un nombre a cada
+                        para jugarse de 4 <b style="font-size: 0.7em;">(mínimo)</b> a 15 
+                        <b style="font-size: 0.7em;">(máximo)</b> personas. Además se puede asignar un nombre a cada
                         jugador para darle un toque más personalizado a la partida
                         <br><br>
-                        Una vez se ha especificado el número de jugadores y sus nombres (opcional) la App elegirá de forma
+                        Una vez se ha especificado el número de jugadores y sus nombres 
+                        <b style="font-size: 0.7em;">(opcional)</b> la App elegirá de forma
                         aleatoria una palabra y un jugador que será el impostor, y a continuación pasará a
-                        mostrar a cada jugador su rol en la partida, para ello pondrá en grande el <b style="color: #fff;">NOMBRE DEL JUGADOR</b>
-                        que debe mirar la pantalla (asegurandose de que los demás no miran) y tras confirmar que está
-                        solo, podrá revelar la <b style="color: #20e3b2;">PALABRA OCULTA</b>. Pulsando sobre el botón siguiente aparecerá en grande el
+                        mostrar a cada jugador su rol en la partida, para ello pondrá 
+                        en grande el <b style="color: #fff;">NOMBRE DEL JUGADOR</b>
+                        que debe mirar la pantalla (asegurandose de que los demás no miran) 
+                        y tras <b style="color: #b6b6b6;">CONFIRMAR</b> que está
+                        solo, podrá <b style="color: #b6b6b6;">REVELAR</b> la 
+                        <b style="color: #20e3b2;">PALABRA OCULTA</b>. Pulsando sobre el botón 
+                        <b style="color: #b6b6b6;">SIGUIENTE</b> aparecerá en grande el
                         nombre del siguiente jugador que deberá mirar a solas su rol
                         <br>
                         Si en vez de mostrar la palabra clave, al pulsar sobre revelar palabra aparece en grande
                         <b style="color: #E32051;">IMPOSTOR</b> tu rol será el de averiguar la palabra sin ser descubierto
-                        <br>
-                        Además en caso de que el primer jugador en revelar su rol sea el impostor, y por tanto sea el primero
-                        en jugar, estará en el peor caso posible de desventaja, pues comenzará la partida sin ninguna pista
-                        de la palabra oculta
                         <br><br>
-                        Cuando todos los jugadores conocen su rol, comenzará la partida, desde este punto la App solamente mostrará
-                        un <b style="color: #fff;">CRONÓMETRO</b> que indica el tiempo que está durando la partida, a la espera de que esta finalice
-                        <br>
-                        Los jugadores en voz alta deberán hacer rondas, hablando en el mismo orden que descubrieron su rol, y
-                        en estas rondas deberán decir una palabra relacionada de alguna forma con la palabra oculta (demostrando conocerla)
-                        <b>pueden ser tan creativos como quieran a la hora de hacer referencias a la palabra oculta, pero si alguien es
-                            muy rebuscado y el resto de compañeros no entienden la referencia se pondrá en el punto de mira como presunto impostor
-                        </b>
-                        asique mucho cuidado con las ideas locas que rondan vuestra cabeza para despistar al impostor porque podeis
-                        despistar también a vuestros compañeros
+                        En caso de que el primer jugador en revelar su rol sea 
+                        el impostor, y por tanto sea el primero en jugar, estará en el 
+                        peor caso posible de desventaja, pues comenzará la partida 
+                        sin ninguna pista de la palabra oculta
                         <br><br>
-                        Al finalizar una ronda (todos los jugadores han dicho algo), se hará una votación para echar al supuesto impostor,
-                        y será eliminado el jugador más votado, pero el juego continua y por tanto no deberá revelar su rol
-                        <br>
-                        El resto de jugadores aún en partida podrán finalizarla en cualquier momento, siempre que la mayoría por votación así
-                        lo decida, para ello habrá un botón justo debajo del cronómetro donde pone "Terminar Partida", si tras pulsarlo, se
-                        descubre que el impostor aún no había sido eliminado, ganará él; si por el contrario, el impostor ya no estaba en partida
-                        ganan todos los jugadores que conocian la palabra oculta
                     </p>
-                    <h1 style="font-size: 2rem;">Modo Clásico</h1>
+                    <h1 style="font-size: 1.5rem; color: #b6b6b6;">Partida en curso</h1>
                     <p style="padding-top: 10px; margin: 0 20px;">
-                        En el modo clásico esta palabra es elegida por la App de manera aleatoria entre
-                        un total de más de 250 palabras<br>Además el primer jugador de la partida (en caso de
-                        no ser impostor) podrá cambiar la palabra tantas veces como quiera (por si la palabra
-                        ya ha sido jugada en partidas anteriores), pero deberá disimular, porque si sus compañeros
-                        le ven cambiar de palabra sabrán que no es el impostor y se estropeará la experiencia de juego
+                        Cuando todos los jugadores conocen su rol, comenzará la partida, 
+                        desde este punto la App solamente mostrará un <b style="color: #fff;">CRONÓMETRO</b> 
+                        que indica el tiempo que está durando la partida, a la espera de que esta finalice
+                        <br>
+                        Los jugadores en voz alta deberán hacer rondas, hablando en el 
+                        mismo orden que descubrieron su rol, y en estas rondas deberán 
+                        decir una palabra relacionada de alguna forma con la palabra 
+                        oculta (demostrando conocerla) <b style="color: #b6b6b6;">pueden ser 
+                            tan creativos como quieran a la hora de hacer referencias a la palabra 
+                            oculta, pero si alguien es muy rebuscado y el resto de compañeros no 
+                            entienden la referencia se pondrá en el punto de mira como presunto impostor
+                        </b>
+                        asique mucho cuidado con las ideas locas que rondan vuestra cabeza para 
+                        despistar al impostor porque podeis despistar también a vuestros compañeros
+                        <br><br>
+                        Al finalizar una ronda (todos los jugadores han dicho algo), se hará una 
+                        votación para echar al supuesto impostor, y será eliminado el jugador más 
+                        votado, pero el juego continua y por tanto no deberá revelar su rol
+                        <br><br>
                     </p>
-                    <h1 style="font-size: 2rem;">Modo Party</h1>
+                    <h1 style="font-size: 1.5rem; color: #b6b6b6;">Finalización de partida</h1>
+                    <p style="padding-top: 10px; margin: 0 20px;">
+                        El resto de jugadores aún en partida podrán finalizarla en cualquier momento, 
+                        siempre que la mayoría por votación así lo decida, para ello habrá un botón 
+                        justo debajo del cronómetro donde pone <b style="color: #b6b6b6;">TERMINAR PARTIDA</b>, 
+                        si tras pulsarlo, se descubre que el impostor aún no había sido eliminado, 
+                        ganará él; si por el contrario, el impostor ya no estaba en partida
+                        ganan todos los jugadores que conocian la palabra oculta
+                        <br><br>
+                    </p>
+                    <h1 style="font-size: 2rem; color: #fff;">Modo Clásico</h1>
+                    <p style="padding-top: 10px; margin: 0 20px;">
+                        En el modo clásico la palabra es elegida por la App de manera 
+                        aleatoria entre un total de más de 250 palabras
+                        <br><br> Además el primer jugador de la partida (en caso de
+                        no ser impostor) podrá <b style="color: #b6b6b6;">CAMBIAR PALABRA</b> 
+                        tantas veces como quiera <b style="color: #b6b6b6;">(por si la palabra
+                        ya ha sido jugada en partidas anteriores)</b>, pero deberá disimular, 
+                        porque si sus compañeros le ven cambiar de palabra sabrán que no es 
+                        el impostor y se estropeará la experiencia de juego
+                        <br><br>
+                    </p>
+                    <h1 style="font-size: 2rem; color: #fff;">Modo Party</h1>
                     <p style="padding-top: 10px; margin: 0 20px;">    
-                        La App seleccionará al azar a alguien que no le enseñará la 
-                        palabra y que por tanto será el impostor de la partida<br><br>
-                        Haréis rondas donde digais en alto y de forma ordenada un adjetivo
-                        de esa palabra, tras cada ronda se eliminará por votación 
-                        a quien penseis la mayoría que no sabe que está describiendo<br><br>
-                        <b>Si te eliminan no reveles tu identidad</b> (impostor o no) <b>para no estropear
-                        la experiencia de juego del resto de jugadores</b>
+                        En el modo party la App hace primero una ronda donde cada jugador escribe una palabra
+                        <br><br> A continuación, la App elige una palabra de forma aleatoria y se muestra a los jugadores 
+                        de la misma forma que en el modo clásico, <b style="color: #b6b6b6;">
+                            la palabra del jugador que la App elija como </b><b style="color: #E32051;">IMPOSTOR</b> 
+                        <b style="color: #b6b6b6;">no puede salir como palabra oculta</b>
+                        <br><br>
+                        Con el modo party cada partida será diferente incluso para jugadores 
+                        habituales que ya conozcan la mayoría de las palabras del modo clásico
+                    </p>
+                    <br><br>
+                    <h1 style="color: #20e3b2; font-size: 3rem;">Ejemplo de partida</h1>
+                    <p style="padding-top: 10px; margin: 0 20px;">
+                        La palabra oculta es <b style="color: #20e3b2;">GALLETA</b>, al comenzar 
+                        la partida el <i style="color: #b6b6b6;">jugador 1</i> dice <b style="color: #fff;">NAVIDAD</b>,
+                        el <i style="color: #b6b6b6;">jugador 2</i> <b style="color: #fff;">MONSTRUO</b>, 
+                        el <i style="color: #b6b6b6;">jugador 3</i> <b style="color: #fff;">VERDE</b> y el 
+                        <i style="color: #b6b6b6;">jugador 4</i> <b style="color: #fff;">HORNO</b>
+                        <br><br>
+                        En este caso deberiamos deducir que el <b style="color: #E32051;">IMPOSTOR</b> es el 
+                        <b style="color: #b6b6b6;"><i>jugador 3</i></b> porque el <i style="color: #b6b6b6;">jugador 1</i> 
+                        dijo <b style="color: #fff;">NAVIDAD</b> y en navidad se hornean galletas, el 
+                        <i style="color: #b6b6b6;">jugador 2</i> dijo <b style="color: #fff;">MONSTRUO</b> haciendo 
+                        referencia al monstruo de las galletas de la serie infantil "Sesame Street", el 
+                        <i style="color: #b6b6b6;">jugador 3</i> dijo <b style="color: #fff;">VERDE</b> 
+                        probablemente pensando que la palabra oculta era GRINCH, influenciado por NAVIDAD y MONSTRUO,
+                        finalmente el <i style="color: #b6b6b6;">jugador 4</i> dijo <b style="color: #fff;">HORNO</b>, 
+                        el cual es necesario para hacer las galletas.
                     </p>
                 </div>
                 <div id="buttons">
@@ -248,7 +295,3 @@
         <script src="script.js"></script>
     </body>
 </html>
-
-<!--
-    FALTA ESCRIBIR BIEN LAS INSTRUCCIONES
--->
