@@ -194,6 +194,7 @@ function createChangeBtn() {
     const br = document.createElement("br");
     const p = document.createElement("p");
     p.innerHTML = "Como eres el primero en ver la palabra, puedes cambiarla pulsando en el botón cambiar, pero <b>disimula porque sabrán que no eres impostor y se estropeará la experiencia de juego</b>";
+    p.id = "gameDescription"
     const button = document.createElement("button");
     button.id = "btnChange";
     button.className = "btnConfirm";
@@ -230,6 +231,7 @@ btnShowPlayer.addEventListener("click", function (event) {
             const pImpostor = document.createElement("p");
             pImpostor.style = "color: #E32051;";
             pImpostor.textContent = "Mucha suerte, al ser el primero en jugar estás en total desventaja";
+            pImpostor.id = "gameDescription"
             impostorDiv.appendChild(br);
             impostorDiv.appendChild(pImpostor);
         }
@@ -471,21 +473,31 @@ function managePlayerList(){
     if (inputPlayers.value != "") {
         if (inputPlayers.value > 15) {
             inputPlayers.value = 15;
-        } else if (inputPlayers.value < 4) {
+        } else if (inputPlayers.value < 4 && inputPlayers.value != 1) {
             inputPlayers.value = 4;
+        } else {
+            inputPlayers.value = Math.trunc( inputPlayers.value )
         }
         inputPlayers.nextElementSibling.classList.add("filled");
         
         numPlayers = inputPlayers.value;
-        if (parseInt(numPlayers) >= tope) {
-            tope++;
-            createPlayer(parseInt(numPlayers), tope);
-            playerList.style = "visibility: visible; opacity: 1; transition: visibility 0.5s, opacity 0.5s linear;";
-            tope = parseInt(numPlayers);
-        } else if (parseInt(numPlayers) < tope) {
-            deletePlayer(parseInt(numPlayers), tope);
-            playerList.style = "visibility: visible; opacity: 1; transition: visibility 0.5s, opacity 0.5s linear;";
-            tope = parseInt(numPlayers);
+        if (numPlayers >= 4 && numPlayers <= 15) {
+            if (parseInt(numPlayers) >= tope) {
+                tope++;
+                createPlayer(parseInt(numPlayers), tope);
+                playerList.style = "visibility: visible; opacity: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+                tope = parseInt(numPlayers);
+            } else if (parseInt(numPlayers) < tope) {
+                deletePlayer(parseInt(numPlayers), tope);
+                playerList.style = "visibility: visible; opacity: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+                tope = parseInt(numPlayers);
+            }
+        } else {
+            deleteAll();
+            inputPlayers.value = "1";
+            inputPlayers.focus();
+            inputPlayers.nextElementSibling.classList.add("filled");
+            tope = 0;
         }
     } else {
         inputPlayers.nextElementSibling.classList.remove("filled");

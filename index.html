@@ -11,10 +11,10 @@
             <div class="game" style="z-index: 0"></div>
             <div id="mainMenu" style="visibility: visible; opacity: 1; z-index: 1;">
                 <div id="titlePage">
-                    <h1 style="color: #20e3b2;">SECRET WORD</h1>
+                    <h1 id="gameName" style="color: #20e3b2;">SECRET WORD</h1>
                     <div id="line"></div>
-                    <img src="icon.png" style="width: 140px;">
-                    <p>Juega al conocido juego Little Secret 
+                    <img id="gameIcon" src="icon.png" style="width: 140px;">
+                    <p id="gameDescription">Juega al conocido juego Little Secret 
                         sin necesidad de un narrador <br><br>
                         Deja que la App se encargue de todo, para que ninguno 
                         de tus amigos se quede mirando como el resto os divertís
@@ -29,9 +29,9 @@
             </div>
             <div id="instructionsGame" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="instructionsDiv">
-                    <h1 style="color: #20e3b2; font-size: 3rem;">Instrucciones</h1>
+                    <h1 id="gameInstructions" style="color: #20e3b2; font-size: 3rem;">Instrucciones</h1>
                     <h1 style="font-size: 1.5rem; color: #b6b6b6;">Preparación de partida</h1>
-                    <p style="padding-top: 10px; margin: 0 20px;">
+                    <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">
                         Secret Word es un juego donde <b style="color: #b6b6b6;">hay una palabra
                         oculta que todos los jugadores conocen, excepto a uno que será el impostor</b>
                         y tendrá que intentar adivinar la palabra de la que se está hablando para no ser descubierto
@@ -63,7 +63,7 @@
                         <br><br>
                     </p>
                     <h1 style="font-size: 1.5rem; color: #b6b6b6;">Partida en curso</h1>
-                    <p style="padding-top: 10px; margin: 0 20px;">
+                    <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">
                         Cuando todos los jugadores conocen su rol, comenzará la partida, 
                         desde este punto la App solamente mostrará un <b style="color: #fff;">CRONÓMETRO</b> 
                         que indica el tiempo que está durando la partida, a la espera de que esta finalice
@@ -85,7 +85,7 @@
                         <br><br>
                     </p>
                     <h1 style="font-size: 1.5rem; color: #b6b6b6;">Finalización de partida</h1>
-                    <p style="padding-top: 10px; margin: 0 20px;">
+                    <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">
                         El resto de jugadores aún en partida podrán finalizarla en cualquier momento, 
                         siempre que la mayoría por votación así lo decida, para ello habrá un botón 
                         justo debajo del cronómetro donde pone <b style="color: #b6b6b6;">TERMINAR PARTIDA</b>, 
@@ -95,7 +95,7 @@
                         <br><br>
                     </p>
                     <h1 style="font-size: 2rem; color: #fff;">Modo Clásico</h1>
-                    <p style="padding-top: 10px; margin: 0 20px;">
+                    <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">
                         En el modo clásico la palabra es elegida por la App de manera 
                         aleatoria entre un total de más de 250 palabras
                         <br><br> Además el primer jugador de la partida (en caso de
@@ -107,7 +107,7 @@
                         <br><br>
                     </p>
                     <h1 style="font-size: 2rem; color: #fff;">Modo Party</h1>
-                    <p style="padding-top: 10px; margin: 0 20px;">    
+                    <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">    
                         En el modo party la App hace primero una ronda donde cada jugador escribe una palabra
                         <br><br> A continuación, la App elige una palabra de forma aleatoria y se muestra a los jugadores 
                         de la misma forma que en el modo clásico, <b style="color: #b6b6b6;">
@@ -118,8 +118,8 @@
                         habituales que ya conozcan la mayoría de las palabras del modo clásico
                     </p>
                     <br><br>
-                    <h1 style="color: #20e3b2; font-size: 3rem;">Ejemplo de partida</h1>
-                    <p style="padding-top: 10px; margin: 0 20px;">
+                    <h1 id="gameInstructions" style="color: #20e3b2; font-size: 3rem;">Ejemplo de partida</h1>
+                    <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">
                         La palabra oculta es <b style="color: #20e3b2;">GALLETA</b>, al comenzar 
                         la partida el <i style="color: #b6b6b6;">jugador 1</i> dice <b style="color: #fff;">NAVIDAD</b>,
                         el <i style="color: #b6b6b6;">jugador 2</i> <b style="color: #fff;">MONSTRUO</b>, 
@@ -143,8 +143,8 @@
             </div>
             <div id="explicationClassic" class="explication" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="explicationDiv">
-                    <h1 style="color: #20e3b2; font-size: 3rem;">Modo Clásico</h1>
-                    <p><b>La App tiene una lista bastante extensa de palabras
+                    <h1 id="gameInstructions" style="color: #20e3b2; font-size: 3rem;">Modo Clásico</h1>
+                    <p id="gameDescription"><b>La App tiene una lista bastante extensa de palabras
                         de entre las cuales seleccionará una de forma aleatoria</b>
                         y la mostrará a cada jugador de manera individual<br><br>
                         El primer jugador (si no es el impostor) podrá cambiar la palabra
@@ -163,8 +163,8 @@
             </div>
             <div id="explicationParty" class="explication" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="explicationDiv">
-                    <h1 style="color: #20e3b2; font-size: 3rem;">Modo Party</h1>
-                    <p><b>La App hará una ronda donde preguntará a cada jugador una palabra
+                    <h1 id="gameInstructions" style="color: #20e3b2; font-size: 3rem;">Modo Party</h1>
+                    <p id="gameDescription"><b>La App hará una ronda donde preguntará a cada jugador una palabra
                         de entre las cuales seleccionará una de forma aleatoria</b>
                         y la mostrará a cada jugador de manera individual<br><br><b>(De esta forma cada
                         partida será diferente incluso para jugadores habituales que ya conozcan
@@ -182,13 +182,13 @@
             </div>
             <div id="selectPlayers" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="instructions">
-                    <p>Indica el número de jugadores</p>
+                    <p id="gameDescription">Indica el número de jugadores</p>
                     <div id="line"></div>
                     <div class="input-container">
                         <input type="number" max="15" min="4" required id="numPlayer" class="num-input" autocomplete="off" placeholder="mínimo 4 / máximo 15" oninput="managePlayerList()" />
                         <label class="label" for="numPlayer">Nº Jugadores</label>
                     </div>
-                    <p>Añade un nombre a cada jugador (Opcional)</p>
+                    <p id="gameDescription">Añade un nombre a cada jugador (Opcional)</p>
                     <div id="line"></div>
                 </div>
                 <div id="players"></div>
@@ -200,9 +200,9 @@
             <div id="showWriter" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="whoWriter">
                     <h1 id="writer" style="color: #fff;"></h1>
-                    <p style="padding: 0; padding-bottom: 10%;">Asegurate de que nadie más puede ver la pantalla</p>
+                    <p id="gameDescription" style="padding: 0; padding-bottom: 10%;">Asegurate de que nadie más puede ver la pantalla</p>
                     <div id="line"></div>
-                    <p>Confirma que eres tu y pordrás escribir la palabra</p>
+                    <p id="gameDescription">Confirma que eres tu y pordrás escribir la palabra</p>
                     <br>
                     <button id="btnConfirmWriter" class="btnConfirm">Confirmar</button>
                 </div>
@@ -218,7 +218,7 @@
                         <label class="label" for="playerWord">Tu palabra es...</label>
                     </div>
                     <br>
-                    <p style="padding: 40px 0 5px;"><b>Cada jugador deberá escribir una palabra</b> que entrará
+                    <p id="gameDescription" style="padding: 40px 0 5px;"><b>Cada jugador deberá escribir una palabra</b> que entrará
                         en el sorteo para ser la palabra oculta de la partida<br><br>
                         Pero no por ello será más fácil, porque cuando <b>la App elige
                         al impostor, descarta automáticamente su palabra del sorteo</b>
@@ -231,9 +231,9 @@
             <div id="showPlayer" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="whoPlayer">
                     <h1 id="name" style="color: #fff;"></h1>
-                    <p style="padding: 0; padding-bottom: 10%;">Asegurate de que nadie más puede ver la pantalla</p>
+                    <p id="gameDescription" style="padding: 0; padding-bottom: 10%;">Asegurate de que nadie más puede ver la pantalla</p>
                     <div id="line"></div>
-                    <p>Confirma que eres tu y pordrás revelar la palabra</p>
+                    <p id="gameDescription">Confirma que eres tu y pordrás revelar la palabra</p>
                     <br>
                     <button id="btnConfirm" class="btnConfirm">Confirmar</button>
                 </div>
@@ -253,7 +253,7 @@
             <div id="showImpostor" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="impostorDiv">
                     <p>Lo siento pero eres el</p>
-                    <h1 style="color: #E32051;">IMPOSTOR</h1>
+                    <h1 id="impostorWord" style="color: #E32051;">IMPOSTOR</h1>
                     <p>Trata de averiguar la palabra</p>
                 </div>
                 <div id="buttons">
@@ -267,7 +267,7 @@
                     <div id="line"></div>
                     <h1 id="time" style="font-size: 3rem; color: #fff;">00:00:00</h1>
                     <div id="line"></div>
-                    <p>Cuando creáis haber descubierto al impostor pulsar el botón <b>"Terminar Partida"</b>
+                    <p id="gameDescription">Cuando creáis haber descubierto al impostor pulsar el botón <b>"Terminar Partida"</b>
                         para ver los resultados<br><br> Si el
                         impostor aún no había sido eliminado ganará él, en caso contrario gana el resto de jugadores
                     </p>
