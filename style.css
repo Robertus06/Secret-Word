@@ -29,31 +29,31 @@ body {
 }
 
 @media screen and (max-width: 736px) {
-    #game {
+    .game {
         width: 95vw;
     }
 }
 
 @media screen and (max-width: 960px) {
-    #game {
+    .game {
         width: 95vw;
     }
 }
 
 @media screen and (min-width: 961px) and (max-width: 1320px) {
-    #game {
+    .game {
         width: 65vw;
     }
 }
 
 @media screen and (min-width: 961px) and (max-width: 1620px) {
-    #game {
+    .game {
         width: 65vw;
     }
 }
 
 @media screen and (min-width: 961px) and (max-width: 1880px) {
-    #game {
+    .game {
         width: 35vw;
     }
 }
