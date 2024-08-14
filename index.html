@@ -13,8 +13,8 @@
                 <div id="titlePage">
                     <h1 id="gameName" style="color: #20e3b2;">SECRET WORD</h1>
                     <div id="line"></div>
-                    <img id="gameIcon" src="icon.png" style="width: 140px;">
-                    <p id="gameDescription">Juega al conocido juego Little Secret 
+                    <img id="gameIcon" src="icon.png" style="width: 100px;">
+                    <p id="gameDescription" style="font-size: 0.85rem;">Juega al conocido juego Little Secret 
                         sin necesidad de un narrador <br><br>
                         Deja que la App se encargue de todo, para que ninguno 
                         de tus amigos se quede mirando como el resto os divertís
@@ -22,9 +22,11 @@
                     <br>
                     <button id="btnInstructions" class="btnConfirm">Como se juega</button>
                     <br><br>
-                    <button id="btnClassicMode" class="btn" style="font-size: 2rem;">Modo Clásico</button>
+                    <button id="btnClassicMode" class="btn" style="font-size: 2rem; padding: 0.7rem 3.85rem;">Modo Clásico</button>
                     <br>
-                    <button id="btnPartyMode" class="btn" style="font-size: 2rem; padding: 0.7rem 3.85rem;">Modo Party</button>
+                    <button id="btnInfiltrateMode" class="btn" style="font-size: 2rem; padding: 0.7rem 3.1rem;">Modo Infiltrado</button>
+                    <br>
+                    <button id="btnPartyMode" class="btn" style="font-size: 2rem; padding: 0.7rem 5rem;">Modo Party</button>
                 </div>
             </div>
             <div id="instructionsGame" style="visibility: hidden; opacity: 0; z-index: -1;">
@@ -40,6 +42,19 @@
                         para jugarse de 4 <b style="font-size: 0.7em;">(mínimo)</b> a 15 
                         <b style="font-size: 0.7em;">(máximo)</b> personas. Además se puede asignar un nombre a cada
                         jugador para darle un toque más personalizado a la partida
+                        <br><br>
+                        También puede seleccionarse el modo de asignar el jugador que inicia la partida. 
+                        Trás indicar los nombres de los jugadores en el orden que se encuentran ubicados, 
+                        el juego dará turno al jugador de forma <b style="color: #b6b6b6;">Aleatoria</b> o <b style="color: #b6b6b6;">Por rondas</b>
+                        <br>
+                        <b style="font-size: 0.7em;">Es más útil cuando los jugadores tienen nombres, en caso de estar identificados 
+                        como "Jugador X", es tan sencillo como entregar el dispositivo a la persona que quiera iniciar partida.
+                        </b>
+                        <br><br>
+                        <b style="color: #fff;">ALEATORIA</b>, cada partida inicia un jugador de forma aleatoria y a continuación, 
+                        los turnos siguen con el jugador que se encuentra a su lado.
+                        <br>
+                        <b style="color: #fff;">POR RONDAS</b>, inicia el jugador uno, en la siguiente partida inicia el jugador dos, en la siguiente el tres, y asi sucesivamente
                         <br><br>
                         Una vez se ha especificado el número de jugadores y sus nombres 
                         <b style="font-size: 0.7em;">(opcional)</b> la App elegirá de forma
@@ -72,9 +87,9 @@
                         mismo orden que descubrieron su rol, y en estas rondas deberán 
                         decir una palabra relacionada de alguna forma con la palabra 
                         oculta (demostrando conocerla) <b style="color: #b6b6b6;">pueden ser 
-                            tan creativos como quieran a la hora de hacer referencias a la palabra 
-                            oculta, pero si alguien es muy rebuscado y el resto de compañeros no 
-                            entienden la referencia se pondrá en el punto de mira como presunto impostor
+                        tan creativos como quieran a la hora de hacer referencias a la palabra 
+                        oculta, pero si alguien es muy rebuscado y el resto de compañeros no 
+                        entienden la referencia se pondrá en el punto de mira como presunto impostor
                         </b>
                         asique mucho cuidado con las ideas locas que rondan vuestra cabeza para 
                         despistar al impostor porque podeis despistar también a vuestros compañeros
@@ -106,18 +121,43 @@
                         el impostor y se estropeará la experiencia de juego
                         <br><br>
                     </p>
+                    <h1 style="font-size: 2rem; color: #fff;">Modo Infiltrado</h1>
+                    <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">
+                        El modo infiltrado es muy similar al modo clásico, con la diferencia de que 
+                        además de un <b style="color: #E32051;">IMPOSTOR</b> también existen 
+                        uno o varios <b style="color: #20d6e3;">INFILTRADOS</b>
+                        <br><br>
+                        El número de infiltrados varía según el número de jugadores 
+                        que haya en la partida. Durante la pantalla de juego <b style="font-size: 0.7em;">(Donde 
+                        se muestra el tiempo de la partida y el objetivo)</b> se indicará cuantos infiltrados 
+                        hay en la partida, para saber cuantos buscar y eliminar, antes de finalizar la partida
+                        <br><br>
+                        Los <b style="color: #20d6e3;">INFILTRADOS</b> también conocen una <b style="color: #20d6e3;">PALABRA OCULTA</b> que es muy similar 
+                        a la <b style="color: #20e3b2;">PALABRA OCULTA</b> del resto de <b style="color: #fff;">JUGADORES</b>, pero no es la misma. Su objetivo 
+                        es fingir que son jugadores normales.
+                        <br>
+                        Por ejemplo los jugadores pueden tener como palabra <b style="color: #20e3b2;">GALLETA</b> 
+                        y los infiltrados la palabra <b style="color: #20d6e3;">TARTA</b>
+                        <br><br>
+                        En este modo de juego existen 3 equipos, los <b style="color: #fff;">JUGADORES</b> que conocen la <b style="color: #20e3b2;">PALABRA OCULTA</b> 
+                        los <b style="color: #20d6e3;">INFILTRADOS</b> que conocen una palabra similar, y el <b style="color: #E32051;">IMPOSTOR</b> que no sabe nada
+                        <br>
+                        <b style="color: #b6b6b6;">Si al finalizar la partida, algún integrante de los infiltrados sigue entre los jugadores, 
+                        ganan los </b><b style="color: #20d6e3;">INFILTRADOS</b>. El resto de reglas son igual que en el modo clásico.
+                        <br><br>
+                    </p>
                     <h1 style="font-size: 2rem; color: #fff;">Modo Party</h1>
                     <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">    
                         En el modo party la App hace primero una ronda donde cada jugador escribe una palabra
                         <br><br> A continuación, la App elige una palabra de forma aleatoria y se muestra a los jugadores 
                         de la misma forma que en el modo clásico, <b style="color: #b6b6b6;">
-                            la palabra del jugador que la App elija como </b><b style="color: #E32051;">IMPOSTOR</b> 
+                        la palabra del jugador que la App elija como </b><b style="color: #E32051;">IMPOSTOR</b> 
                         <b style="color: #b6b6b6;">no puede salir como palabra oculta</b>
                         <br><br>
                         Con el modo party cada partida será diferente incluso para jugadores 
                         habituales que ya conozcan la mayoría de las palabras del modo clásico
+                        <br><br>
                     </p>
-                    <br><br>
                     <h1 id="gameInstructions" style="color: #20e3b2; font-size: 3rem;">Ejemplo de partida</h1>
                     <p id="gameDescription" style="padding-top: 10px; margin: 0 20px;">
                         La palabra oculta es <b style="color: #20e3b2;">GALLETA</b>, al comenzar 
@@ -161,6 +201,29 @@
                     <button id="btnClasicNext" class="btn">Siguiente</button>
                 </div>
             </div>
+            <div id="explicationInfiltrate" class="explication" style="visibility: hidden; opacity: 0; z-index: -1;">
+                <div id="explicationDiv">
+                    <h1 id="gameInstructions" style="color: #20e3b2; font-size: 3rem;">Modo Infiltrado</h1>
+                    <p id="gameDescription"><b>La App tiene una lista bastante extensa de palabras
+                        de entre las cuales seleccionará una de forma aleatoria</b>
+                        y la mostrará a cada jugador de manera individual<br><br>
+                        El primer jugador (si no es el impostor) podrá cambiar la palabra
+                        en caso de ser repetida, pero <b>DISIMULA</b> o sabrán que no eres
+                        impostor y se estropeará la experiencia de juego<br><br>
+                        La App seleccionará al azar a alguien que no le enseñará la 
+                        palabra y que por tanto será el impostor de la partida<br><br>
+                        <b>Además, según el número de jugadores asignará uno o varios impostores 
+                        que verán una palabra similar a la del resto de jugadores y deberán 
+                        fingir ser un jugador normal para no ser eliminados y ganar</b>
+                    </p>
+                    <br><br>
+                    <p><b>A continuación podréis seleccionar el número de jugadores</b></p>
+                </div>
+                <div id="buttons">
+                    <button id="btnInfiltrateBack" class="btn" style="padding: 0.7rem 3.5rem;">Volver</button>
+                    <button id="btnInfiltrateNext" class="btn">Siguiente</button>
+                </div>
+            </div>
             <div id="explicationParty" class="explication" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="explicationDiv">
                     <h1 id="gameInstructions" style="color: #20e3b2; font-size: 3rem;">Modo Party</h1>
@@ -182,6 +245,11 @@
             </div>
             <div id="selectPlayers" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="instructions">
+                    <div style="display: flex; align-items: center;">
+                        <p style="font-size: 0.6em;">Aleatorio &nbsp;&nbsp;&nbsp;</p>
+                        <label class="switch"><input id="btnRandomOrRound" type="checkbox"><span class="slider round"></span></label>
+                        <p style="font-size: 0.6em;">&nbsp;&nbsp;&nbsp; Por Rondas</p>
+                    </div>
                     <p id="gameDescription">Indica el número de jugadores</p>
                     <div id="line"></div>
                     <div class="input-container">
@@ -199,6 +267,7 @@
             </div>
             <div id="showWriter" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="whoWriter">
+                    <button id="btnResetWriter" class="btnReset">Reiniciar</button>
                     <h1 id="writer" style="color: #fff;"></h1>
                     <p id="gameDescription" style="padding: 0; padding-bottom: 10%;">Asegurate de que nadie más puede ver la pantalla</p>
                     <div id="line"></div>
@@ -230,6 +299,7 @@
             </div>
             <div id="showPlayer" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="whoPlayer">
+                    <button id="btnReset" class="btnReset">Reiniciar</button>
                     <h1 id="name" style="color: #fff;"></h1>
                     <p id="gameDescription" style="padding: 0; padding-bottom: 10%;">Asegurate de que nadie más puede ver la pantalla</p>
                     <div id="line"></div>
@@ -245,6 +315,18 @@
                 <div id="wordDiv">
                     <p><b>La palabra es:</b></p>
                     <h1 id="word" style="color: #20e3b2;"></h1>
+                    <p></p>
+                </div>
+                <div id="buttons">
+                    <button id="btnWordNext" class="btn">Siguiente</button>
+                </div>
+            </div>
+            <div id="showInfiltrate" style="visibility: hidden; opacity: 0; z-index: -1;">
+                <div id="wordDiv">
+                    <p>Eres un INFILTRADO
+                    <br><b>Tu palabra es:</b></p>
+                    <h1 id="infiltrateWord" style="color: #20d6e3;"></h1>
+                    <p>Finge ser un jugador más</p>
                 </div>
                 <div id="buttons">
                     <button id="btnWordNext" class="btn">Siguiente</button>

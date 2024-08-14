@@ -36,12 +36,48 @@ var wordList = ["silla", "mesa", "estantería", "lámpara", "ventilador", "botel
     "corazón", "destornillador", "martillo", "gafas", "calvo", "ladrón", "buzo", "sombrero",
     "League Of Legends", "Call Of Duty", "televisión", "alarma", "obra", "sello"];
 
+var infiltrateWordList = ["silla", "mesa", "estantería", "lámpara", "ventilador", "botella",
+    "galleta", "hamburguesa", "pan", "freidora", "ordenador", "teclado", "ratón", "móvil",
+    "pantalla", "luna", "sol", "estrella", "avión", "autobus", "coche", "tren", "moto",
+    "camión", "casco", "auriculares", "isla", "playa", "lobo", "tigre", "león", "elefante",
+    "dragón", "dinosaurio", "olas", "segundo", "hormiga", "letra", "cara", "mascota",
+    "perro", "gato", "pez", "hilo", "piscina", "templo", "hueso", "sombra", "cebra",
+    "caracol", "fantasma", "vampiro", "dormitorio", "cama", "pijama", "almohada",
+    "hielo", "metal", "cuadro", "pintura", "pelota", "idioma", "luz", "volante",
+    "rueda", "regla", "lapiz", "estuche", "bolígrafo", "tanque", "guerra", "cremallera",
+    "chaqueta", "abrigo", "camiseta", "pantalón", "zapato", "calcetín", "cinturón",
+    "tabaco", "cigarro", "mechero", "cubata", "fiesta", "polígono", "horóscopo", "cojín",
+    "peluche", "tomate", "nuez", "almendra", "banco", "trofeo", "medalla", "universidad",
+    "colegio", "instituto", "diploma", "videojuego", "pingüino", "memoria", "residencia",
+    "médico", "hospital", "paraguas", "escenario", "teatro", "cine", "estadio", "madre",
+    "pera", "plátano", "manzana", "furgoneta", "pie", "estómago", "vaso", "premio", "maleta",
+    "mochila", "cristal", "espejo", "copa", "pizza", "flor", "lentejas", "proyector",
+    "dentadura", "naranja", "taburete", "bebe", "ajedrez", "cuchara", "tenedor",
+    "cuchillo", "pájaro", "casa", "juguete", "pueblo", "ciudad", "músculo", "gimnasio",
+    "comedor", "hotel", "calefacción", "presidente", "carta", "tarta", "ventana",
+    "formulario", "pollo", "mar", "dinero", "moneda", "billete", "espantapájaros",
+    "monitor", "lima", "zoo", "entrenador", "oficina", "jardín", "Egipto", "España",
+    "Francia", "Italia", "Grecia", "hipopótamo", "cepillo", "esposa", "boda", "calle",
+    "bicicleta", "montaña", "bosque", "campo", "fregadero", "cola", "vestido",
+    "almeja", "cangrejo", "escritorio", "buzón", "granja", "conejo", "pluma", "vaca",
+    "gigante", "papel", "agua", "alcohol", "fanta", "nestea", "guitarra", "batería",
+    "yeti", "fifa", "fortnite", "cactus", "bombilla", "actor", "disco", "canasta",
+    "portería", "toro", "vagabundo", "tijera", "trabajo", "mina", "tierra", "sartén",
+    "lluvia", "campana", "cerebro", "hada", "árbol", "trébol", "gnomo", "cubo", "zumo",
+    "fotografía", "bombero", "policía", "piña", "cabaña", "candelabro", "palmera",
+    "tatuaje", "caravana", "estatua", "siesta", "graffiti", "tienda", "jarabe",
+    "jeringuilla", "vela", "grano", "radio", "barco", "queso", "sopa", "café", "muerto",
+    "corazón", "destornillador", "martillo", "gafas", "calvo", "ladrón", "buzo", "sombrero",
+    "League Of Legends", "Call Of Duty", "televisión", "alarma", "obra", "sello"];
+
 var mainMenu = document.getElementById("mainMenu");
 var explicationClassic = document.getElementById("explicationClassic");
+var explicationInfiltrate = document.getElementById("explicationInfiltrate");
 var explicationParty = document.getElementById("explicationParty");
 var selectPlayers = document.getElementById("selectPlayers");
 var showPlayer = document.getElementById("showPlayer");
 var showWord = document.getElementById("showWord");
+var showInfiltrate = document.getElementById("showInfiltrate");
 var showImpostor = document.getElementById("showImpostor");
 var timeGame = document.getElementById("timeGame");
 var finishMenu = document.getElementById("finishMenu");
@@ -49,15 +85,25 @@ var instructionsMenu = document.getElementById("instructionsGame");
 var showWriter = document.getElementById("showWriter");
 var writeWord = document.getElementById("writeWord");
 
-//true = clasicMode - false = partyMode
-var typeGame = true;
+// 0 = clasicMode / 1 = infiltrateMode / 2 = partyMode
+var typeGame = -1;
 
 var playerNames = [];
 var playerWords = [];
 
+var startPlayer = 0;
+var round = -1;
+var randomOrRound = true;
+
 var word;
+var infiltrateWord;
 var randomWord = 0;
-var randomPlayer = 0;
+
+var randomImpostor = 0;
+var randomInfiltrateOne = -1;
+var randomInfiltrateTwo = -1;
+var randomInfiltrateThree = -1;
+
 var count = 0;
 
 var chronometer = 0;
@@ -75,7 +121,7 @@ var btnClassicMode = document.getElementById("btnClassicMode");
 btnClassicMode.addEventListener("click", function (event) {
     mainMenu.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
     explicationClassic.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
-    typeGame = true;
+    typeGame = 0;
 });
 
 var btnClasicBack = document.getElementById("btnClasicBack");
@@ -92,11 +138,32 @@ btnClasicNext.addEventListener("click", function (event) {
     tope = 0;
 });
 
+var btnInfiltrateMode = document.getElementById("btnInfiltrateMode");
+btnInfiltrateMode.addEventListener("click", function (event) {
+    mainMenu.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
+    explicationInfiltrate.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+    typeGame = 1;
+});
+
+var btnInfiltrateBack = document.getElementById("btnInfiltrateBack");
+btnInfiltrateBack.addEventListener("click", function (event) {
+    explicationInfiltrate.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
+    mainMenu.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+});
+
+var btnInfiltrateNext = document.getElementById("btnInfiltrateNext");
+btnInfiltrateNext.addEventListener("click", function (event) {
+    explicationInfiltrate.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
+    selectPlayers.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+    deleteAll();
+    tope = 0;
+});
+
 var btnPartyMode = document.getElementById("btnPartyMode");
 btnPartyMode.addEventListener("click", function (event) {
     mainMenu.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
     explicationParty.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
-    typeGame = false;
+    typeGame = 2;
 });
 
 var btnPartyBack = document.getElementById("btnPartyBack");
@@ -113,46 +180,53 @@ btnPartyNext.addEventListener("click", function (event) {
     tope = 0;
 });
 
+var btnRandomOrRound = document.getElementById("btnRandomOrRound");
+btnRandomOrRound.addEventListener("change", function (event) {
+    if (this.checked) {
+        randomOrRound = false; // Rounds
+    } else {
+        randomOrRound = true; // Random
+    }
+});
+
+var numAux = 1;
+
+function getRandomIntInclusive(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
 var btnSelectPlayersNext = document.getElementById("btnSelectPlayersNext");
 btnSelectPlayersNext.addEventListener("click", function (event) {
     if (document.getElementById("numPlayer").value != "") {
+        if (numPlayersLast != numPlayers) {
+            round = -1;
+        }
+        if (randomOrRound) {
+            startPlayer = getRandomIntInclusive(1, parseInt(numPlayers));
+        }
         for (var i = 1; i <= numPlayers; i++) {
-            if (document.getElementById("name"+i).value != '') {
-                playerNames.push(document.getElementById("name"+i).value);
+            if (randomOrRound) {
+                numAux = (startPlayer % (parseInt(numPlayers))) + 1;
+                startPlayer++;
             } else {
-                playerNames.push("Jugador " + i);
+                numAux = ((i + round) % (parseInt(numPlayers))) + 1;
+            }
+            if (document.getElementById("name"+ numAux).value != '') {
+                playerNames.push(document.getElementById("name"+ numAux).value);
+            } else {
+                playerNames.push("Jugador " + numAux);
             }
         }
-        if (typeGame) {
-            selectPlayers.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
-            showPlayer.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
-            
-            document.getElementById("name").textContent = playerNames[0].toUpperCase();
-            
-            randomWord = Math.floor(Math.random() * wordList.length);
-            word = wordList[randomWord].toUpperCase();
-            document.getElementById("word").textContent = word;
-            
-            randomPlayer = Math.floor(Math.random() * playerNames.length);
-            
-            count = 0;
-            
-            if (impostorDiv.children.length > 3) {
-                for (var i = 0; i < 2; i++) {
-                    impostorDiv.children[impostorDiv.children.length-1].remove();
-                }
-            }
-        
-            btnConfirm.style = "visibility: visible; opacity: 1;";
-            btnShowPlayer.style = "visibility: hidden; opacity: 0;";
-        } else {
+        if (typeGame == 2) {
             selectPlayers.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
             showWriter.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
             
             document.getElementById("writerName").textContent = playerNames[0].toUpperCase();
             document.getElementById("writer").textContent = playerNames[0].toUpperCase();
 
-            randomPlayer = Math.floor(Math.random() * playerNames.length);
+            randomImpostor = Math.floor(Math.random() * playerNames.length);
             
             count = 0;
 
@@ -164,6 +238,49 @@ btnSelectPlayersNext.addEventListener("click", function (event) {
         
             btnConfirmWriter.style = "visibility: visible; opacity: 1;";
             btnShowWriter.style = "visibility: hidden; opacity: 0;";
+        } else {
+            selectPlayers.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
+            showPlayer.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+            
+            document.getElementById("name").textContent = playerNames[0].toUpperCase();
+            
+            randomWord = Math.floor(Math.random() * wordList.length);
+            word = wordList[randomWord].toUpperCase();
+            document.getElementById("word").textContent = word;
+            
+            randomImpostor = Math.floor(Math.random() * playerNames.length);
+
+            if (typeGame == 1) {
+                infiltrateWord = infiltrateWordList[randomWord].toUpperCase();
+                document.getElementById("infiltrateWord").textContent = infiltrateWord;
+
+                do {
+                    randomInfiltrateOne = Math.floor(Math.random() * playerNames.length);
+                } while (randomInfiltrateOne == randomImpostor);
+
+                if (numPlayers > 6) {
+                    do {
+                        randomInfiltrateTwo = Math.floor(Math.random() * playerNames.length);
+                    } while (randomInfiltrateTwo == randomImpostor || randomInfiltrateTwo == randomInfiltrateOne);
+                }
+
+                if (numPlayers > 9) {
+                    do {
+                        randomInfiltrateThree = Math.floor(Math.random() * playerNames.length);
+                    } while (randomInfiltrateThree == randomImpostor || randomInfiltrateThree == randomInfiltrateOne || randomInfiltrateThree == randomInfiltrateTwo);
+                }
+            }
+            
+            count = 0;
+            
+            if (impostorDiv.children.length > 3) {
+                for (var i = 0; i < 2; i++) {
+                    impostorDiv.children[impostorDiv.children.length-1].remove();
+                }
+            }
+        
+            btnConfirm.style = "visibility: visible; opacity: 1;";
+            btnShowPlayer.style = "visibility: hidden; opacity: 0;";
         }
     }
 });
@@ -207,7 +324,7 @@ function createChangeBtn() {
 }
 
 function deleteChangeBtn() {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i <= 3; i++) {
         document.getElementById("wordDiv").children[wordDiv.children.length-1].remove();
     }
 }
@@ -225,8 +342,8 @@ btnShowWriter.addEventListener("click", function (event) {
 var impostorDiv = document.getElementById("impostorDiv");
 btnShowPlayer.addEventListener("click", function (event) {
     showPlayer.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
-    if (count == randomPlayer) {
-        if (randomPlayer == 0) {
+    if (count == randomImpostor) {
+        if (randomImpostor == 0) {
             const br = document.createElement("br");
             const pImpostor = document.createElement("p");
             pImpostor.style = "color: #E32051;";
@@ -237,13 +354,13 @@ btnShowPlayer.addEventListener("click", function (event) {
         }
         showImpostor.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
     } else {
-        if (randomPlayer == 1 && typeGame) {
+        if (randomImpostor == 1 && (typeGame == 0 || typeGame == 1)) {
             if (count == 0) {
                 createChangeBtn();
             } else if (count == 2) {
                 deleteChangeBtn();
             }
-        } else if (randomPlayer > 1 && typeGame) {
+        } else if (randomImpostor > 1 && (typeGame == 0 || typeGame == 1)) {
             if (count == 0) {
                 createChangeBtn();
             } else if (count == 1) {
@@ -261,6 +378,11 @@ function changeWord() {
     } while (randomWord == lastRandom);
     word = wordList[randomWord].toUpperCase();
     document.getElementById("word").textContent = word;
+
+    if (typeGame == 1) {
+        infiltrateWord = infiltrateWordList[randomWord].toUpperCase();
+        document.getElementById("infiltrateWord").textContent = infiltrateWord;
+    }
 }
 
 var time = document.getElementById("time");
@@ -284,11 +406,11 @@ btnWriteNext.addEventListener("click", function (event) {
             btnShowPlayer.style = "visibility: hidden; opacity: 0;";
             showPlayer.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
             
-            randomPlayer = Math.floor(Math.random() * playerNames.length);
+            randomImpostor = Math.floor(Math.random() * playerNames.length);
             
             do {
                 randomWord = Math.floor(Math.random() * playerWords.length);
-            } while (randomWord == randomPlayer);
+            } while (randomWord == randomImpostor);
             
             word = playerWords[randomWord].toUpperCase();
             document.getElementById("word").textContent = word;    
@@ -387,7 +509,26 @@ btnFinish.addEventListener("click", function (event) {
     minutes = 0;
     resultTime.innerHTML = chronometer;
     resultWord.innerHTML = word;
-    resultImpostor.innerHTML = playerNames[randomPlayer].toUpperCase();
+    resultImpostor.innerHTML = playerNames[randomImpostor].toUpperCase();
+});
+
+var numPlayersLast;
+
+var btnReset = document.getElementById("btnReset");
+btnReset.addEventListener("click", function (event) {
+    showPlayer.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
+    selectPlayers.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+    playerNames.length = 0;
+    numPlayersLast = numPlayers;
+});
+
+var btnResetWriter = document.getElementById("btnResetWriter");
+btnReset.addEventListener("click", function (event) {
+    showWriter.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
+    selectPlayers.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+    playerNames.length = 0;
+    playerWords.length = 0;
+    numPlayersLast = numPlayers;
 });
 
 var btnReplay = document.getElementById("btnReplay");
@@ -396,6 +537,8 @@ btnReplay.addEventListener("click", function (event) {
     selectPlayers.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
     playerNames.length = 0;
     playerWords.length = 0;
+    round++;
+    numPlayersLast = numPlayers;
 });
 
 var btnExit = document.getElementById("btnExit");
@@ -404,6 +547,7 @@ btnExit.addEventListener("click", function (event) {
     mainMenu.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
     playerNames.length = 0;
     playerWords.length = 0;
+    round = -1;
 });
 
 var btnInstructions = document.getElementById("btnInstructions");
