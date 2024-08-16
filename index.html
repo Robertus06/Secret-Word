@@ -322,14 +322,14 @@
                 </div>
             </div>
             <div id="showInfiltrate" style="visibility: hidden; opacity: 0; z-index: -1;">
-                <div id="wordDiv">
-                    <p>Eres un INFILTRADO
+                <div id="infiltrateDiv">
+                    <p>Eres un <b style="color: #fff;">INFILTRADO</b>
                     <br><b>Tu palabra es:</b></p>
                     <h1 id="infiltrateWord" style="color: #20d6e3;"></h1>
                     <p>Finge ser un jugador más</p>
                 </div>
                 <div id="buttons">
-                    <button id="btnWordNext" class="btn">Siguiente</button>
+                    <button id="btnInfiltrateWordNext" class="btn">Siguiente</button>
                 </div>
             </div>
             <div id="showImpostor" style="visibility: hidden; opacity: 0; z-index: -1;">
@@ -344,12 +344,12 @@
             </div>
             <div id="timeGame" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="clockDiv">
-                    <p><b>RECUERDA</b><br> No reveles tu identidad al ser eliminado</p>
+                    <p><b style="color: #fff;"><b>RECUERDA</b><br> No reveles tu identidad al ser eliminado</b></p>
                     <br><br>
                     <div id="line"></div>
                     <h1 id="time" style="font-size: 3rem; color: #fff;">00:00:00</h1>
                     <div id="line"></div>
-                    <p id="gameDescription">Cuando creáis haber descubierto al impostor pulsar el botón <b>"Terminar Partida"</b>
+                    <p id="gameDescriptionTimer">Cuando creáis haber descubierto al impostor pulsar el botón <b>"Terminar Partida"</b>
                         para ver los resultados<br><br> Si el
                         impostor aún no había sido eliminado ganará él, en caso contrario gana el resto de jugadores
                     </p>
@@ -359,12 +359,16 @@
             </div>
             <div id="finishMenu" style="visibility: hidden; opacity: 0; z-index: -1;">
                 <div id="finishPage">
-                    <p>El tiempo de juego total ha sido:</p>
-                    <h1 id="resultTime" style="font-size: 3rem; color: #fff;"></h1>
-                    <p>La palabra secreta era:</p>
-                    <h1 id="resultWord" style="color: #20e3b2; font-size: 3rem;"></h1>
-                    <p>El impostor era:</p>
-                    <h1 id="resultImpostor" style="color: #E32051; font-size: 3rem;"></h1>
+                    <div id="players" style="height: 60%; margin: 0% 0%; padding: 0rem 2rem 0rem 2rem;">
+                        <p>El tiempo de juego total ha sido:</p>
+                        <h1 id="resultTime" style="font-size: 2.8rem; color: #fff;"></h1>
+                        <p>El impostor era:</p>
+                        <h1 id="resultImpostor" style="color: #E32051; font-size: 2.8rem;"></h1>
+                        <p id="pResultInfiltrates"></p>
+                        <h1 id="resultInfiltrates" style="color: #20d6e3; font-size: 2.8rem;"></h1>
+                        <p>La palabra secreta era:<br><b style="font-size: 0.7em;">(Pulsa para ver)</b></p>
+                        <h1 id="resultWord" style="color: #20e3b2; font-size: 3rem;" onclick="toggleWord()"></h1>
+                    </div>
                     <br><br>
                     <div id="line"></div>
                     <br><br>

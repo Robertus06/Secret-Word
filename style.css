@@ -29,6 +29,10 @@ body {
     */
 }
 
+#gameDescription, #gameDescriptionTimer {
+    font-size: 0.85rem;
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
@@ -157,10 +161,6 @@ input:checked + .slider:before {
 
     #gameIcon {
         max-width: 30%;
-    }
-
-    #gameDescription {
-        font-size: 0.85rem;
     }
 
     #gameInstructions {
@@ -619,7 +619,7 @@ input[type=number]::-webkit-inner-spin-button {
     */
 }
 
-#wordDiv, #impostorDiv, #clockDiv, #writeDiv {
+#wordDiv, #infiltrateDiv, #impostorDiv, #clockDiv, #writeDiv {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -36,10 +36,11 @@ var wordList = ["silla", "mesa", "estantería", "lámpara", "ventilador", "botel
     "corazón", "destornillador", "martillo", "gafas", "calvo", "ladrón", "buzo", "sombrero",
     "League Of Legends", "Call Of Duty", "televisión", "alarma", "obra", "sello"];
 
-var infiltrateWordList = ["silla", "mesa", "estantería", "lámpara", "ventilador", "botella",
-    "galleta", "hamburguesa", "pan", "freidora", "ordenador", "teclado", "ratón", "móvil",
-    "pantalla", "luna", "sol", "estrella", "avión", "autobus", "coche", "tren", "moto",
-    "camión", "casco", "auriculares", "isla", "playa", "lobo", "tigre", "león", "elefante",
+var infiltrateWordList = ["sillón", "encimera", "librería", "foco", "abanico", "vaso",
+    "tarta", "perrito caliente", "colín", "sartén", "consola", "piano", "puntero", "tablet",
+    "televisión", "satélite", "fuego", "planeta", "helicóptero", "tren", "furgoneta", "metro", "triciclo",
+    "remolque", "gorra", "altavoz", "peninsula", "río", "perro", "pantera", "leopardo", "rinoceronte",
+    
     "dragón", "dinosaurio", "olas", "segundo", "hormiga", "letra", "cara", "mascota",
     "perro", "gato", "pez", "hilo", "piscina", "templo", "hueso", "sombra", "cebra",
     "caracol", "fantasma", "vampiro", "dormitorio", "cama", "pijama", "almohada",
@@ -103,6 +104,8 @@ var randomImpostor = 0;
 var randomInfiltrateOne = -1;
 var randomInfiltrateTwo = -1;
 var randomInfiltrateThree = -1;
+
+var numInfiltrates = 0;
 
 var count = 0;
 
@@ -258,16 +261,22 @@ btnSelectPlayersNext.addEventListener("click", function (event) {
                     randomInfiltrateOne = Math.floor(Math.random() * playerNames.length);
                 } while (randomInfiltrateOne == randomImpostor);
 
+                numInfiltrates = 1;
+
                 if (numPlayers > 6) {
                     do {
                         randomInfiltrateTwo = Math.floor(Math.random() * playerNames.length);
                     } while (randomInfiltrateTwo == randomImpostor || randomInfiltrateTwo == randomInfiltrateOne);
+
+                    numInfiltrates = 2;
                 }
 
                 if (numPlayers > 9) {
                     do {
                         randomInfiltrateThree = Math.floor(Math.random() * playerNames.length);
                     } while (randomInfiltrateThree == randomImpostor || randomInfiltrateThree == randomInfiltrateOne || randomInfiltrateThree == randomInfiltrateTwo);
+                    
+                    numInfiltrates = 3;
                 }
             }
             
@@ -282,6 +291,16 @@ btnSelectPlayersNext.addEventListener("click", function (event) {
             btnConfirm.style = "visibility: visible; opacity: 1;";
             btnShowPlayer.style = "visibility: hidden; opacity: 0;";
         }
+    }
+
+    if (typeGame == 1) {
+        if (numInfiltrates == 1) {
+            document.getElementById("gameDescriptionTimer").innerHTML = "<span style=\"font-size: 1.3rem;\">Hay <b style=\"color: #fff;\">" + numInfiltrates + "</b> <b style=\"color: #20d6e3;\">INFILTRADO</b></span><br><br>Cuando creáis haber descubierto al <b style=\"color: #E32051;\">IMPOSTOR</b> y a los <b style=\"color: #20d6e3;\">INFILTRADOS</b> pulsar el botón <b>\"Terminar Partida\"</b> para ver los resultados<br><br> Si el <b style=\"color: #E32051;\">IMPOSTOR</b> o algún <b style=\"color: #20d6e3;\">INFILTRADO</b> aún no había sido eliminado ganará él, en caso contrario gana el resto de <b style=\"color: #fff;\">JUGADORES</b>";
+        } else {
+            document.getElementById("gameDescriptionTimer").innerHTML = "<span style=\"font-size: 1.3rem;\">Hay <b style=\"color: #fff;\">" + numInfiltrates + "</b> <b style=\"color: #20d6e3;\">INFILTRADOS</b></span><br><br>Cuando creáis haber descubierto al <b style=\"color: #E32051;\">IMPOSTOR</b> y a los <b style=\"color: #20d6e3;\">INFILTRADOS</b> pulsar el botón <b>\"Terminar Partida\"</b> para ver los resultados<br><br> Si el <b style=\"color: #E32051;\">IMPOSTOR</b> o algún <b style=\"color: #20d6e3;\">INFILTRADO</b> aún no había sido eliminado ganará él, en caso contrario gana el resto de <b style=\"color: #fff;\">JUGADORES</b>";
+        }
+    } else {
+        document.getElementById("gameDescriptionTimer").innerHTML = "Cuando creáis haber descubierto al <b style=\"color: #E32051;\">IMPOSTOR</b> pulsar el botón <b>\"Terminar Partida\"</b> para ver los resultados<br><br> Si el <b style=\"color: #E32051;\">IMPOSTOR</b> aún no había sido eliminado ganará él, en caso contrario gana el resto de <b style=\"color: #fff;\">JUGADORES</b>";
     }
 });
 
@@ -323,9 +342,32 @@ function createChangeBtn() {
     wordDiv.appendChild(button);
 }
 
+var infiltrateDiv = document.getElementById("infiltrateDiv");
+function createChangeBtnInfiltrate() {
+    const br = document.createElement("br");
+    const p = document.createElement("p");
+    p.innerHTML = "Como eres el primero en ver la palabra, puedes cambiarla pulsando en el botón cambiar, pero <b>disimula porque sabrán que no eres impostor y se estropeará la experiencia de juego</b>";
+    p.id = "gameDescription"
+    const button = document.createElement("button");
+    button.id = "btnChange";
+    button.className = "btnConfirm";
+    button.textContent = "Cambiar Palabra";
+    button.setAttribute('onclick','changeWord()');
+    infiltrateDiv.appendChild(br);
+    infiltrateDiv.appendChild(p);
+    infiltrateDiv.appendChild(br);
+    infiltrateDiv.appendChild(button);
+}
+
 function deleteChangeBtn() {
     for (var i = 0; i <= 3; i++) {
         document.getElementById("wordDiv").children[wordDiv.children.length-1].remove();
+    }
+}
+
+function deleteChangeBtnInfiltrate() {
+    for (var i = 0; i <= 3; i++) {
+        document.getElementById("infiltrateDiv").children[infiltrateDiv.children.length-1].remove();
     }
 }
 
@@ -367,7 +409,11 @@ btnShowPlayer.addEventListener("click", function (event) {
                 deleteChangeBtn();
             }
         }
-        showWord.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+        if (count == randomInfiltrateOne || count == randomInfiltrateTwo || count == randomInfiltrateThree) {
+            showInfiltrate.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+        } else {
+            showWord.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+        }
     }
 });
 
@@ -457,6 +503,43 @@ btnWordNext.addEventListener("click", function (event) {
     }
 });
 
+var btnInfiltrateWordNext = document.getElementById("btnInfiltrateWordNext");
+btnInfiltrateWordNext.addEventListener("click", function (event) {
+    showInfiltrate.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
+    count++;
+    if (count < tope) {
+        document.getElementById("name").textContent = playerNames[count].toUpperCase();
+        btnConfirm.style = "visibility: visible; opacity: 1;";
+        btnShowPlayer.style = "visibility: hidden; opacity: 0;";
+        showPlayer.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+    } else {
+        refreshIntervalId = setInterval(function() {
+            timer++;
+            miliseconds = timer%100;
+            seconds = Math.trunc((timer/100)%60);
+            minutes = Math.trunc((timer/100)/60);
+            if (miliseconds < 10) {
+                milisecondText = "0" + miliseconds;
+            } else {
+                milisecondText = "" + miliseconds;
+            }
+            if (seconds < 10) {
+                secondText = "0" + seconds;
+            } else {
+                secondText = "" + seconds;
+            }
+            if (minutes < 10) {
+                minuteText = "0" + minutes;
+            } else {
+                minuteText = "" + minutes;
+            }
+            time.innerHTML = minuteText + ":" + secondText + ":" + milisecondText;
+            chronometer = time.textContent;
+        }, 10);
+        timeGame.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
+    }
+});
+
 var btnImpostorNext = document.getElementById("btnImpostorNext");
 btnImpostorNext.addEventListener("click", function (event) {
     showImpostor.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
@@ -498,6 +581,22 @@ var resultTime = document.getElementById("resultTime");
 var resultWord = document.getElementById("resultWord");
 var resultImpostor = document.getElementById("resultImpostor");
 
+function toggleWord() {
+    if (typeGame == 1) {
+        if (resultWord.textContent == "************") {
+            resultWord.innerHTML = word + "<br><span style=\"color: #20d6e3;\">" + infiltrateWord + "</span>";
+        } else {
+            resultWord.innerHTML = "******<br><span style=\"color: #20d6e3;\">******</span>";
+        }
+    } else {
+        if (resultWord.textContent == "******") {
+            resultWord.innerHTML = word;
+        } else {
+            resultWord.innerHTML = "******";
+        }
+    }
+}
+
 var btnFinish = document.getElementById("btnFinish");
 btnFinish.addEventListener("click", function (event) {
     timeGame.style = "visibility: hidden; opacity: 0; z-index: -1; transition: visibility 0.2s, opacity 0.2s linear;";
@@ -508,7 +607,27 @@ btnFinish.addEventListener("click", function (event) {
     seconds = 0;
     minutes = 0;
     resultTime.innerHTML = chronometer;
-    resultWord.innerHTML = word;
+    resultWord.innerHTML = "******"
+    if (typeGame == 1) {
+        document.getElementById("pResultInfiltrates").style.padding = "30px 0 5px";
+        document.getElementById("resultInfiltrates").style.padding = "5px 0 5px";
+
+        resultWord.innerHTML = "******<br><span style=\"color: #20d6e3;\">******</span>"
+        if (numInfiltrates == 1) {
+            document.getElementById("pResultInfiltrates").innerHTML = "El infiltrado era:";
+            document.getElementById("resultInfiltrates").innerHTML = playerNames[randomInfiltrateOne].toUpperCase();
+        } else {
+            document.getElementById("pResultInfiltrates").innerHTML = "Los infiltrados eran:";
+            if (numInfiltrates == 2) {
+                document.getElementById("resultInfiltrates").innerHTML = playerNames[randomInfiltrateOne].toUpperCase() + "<br>" + playerNames[randomInfiltrateTwo].toUpperCase();
+            } else {
+                document.getElementById("resultInfiltrates").innerHTML = playerNames[randomInfiltrateOne].toUpperCase() + "<br>" + playerNames[randomInfiltrateTwo].toUpperCase() + "<br>" + playerNames[randomInfiltrateThree].toUpperCase();
+            }
+        }
+    } else {
+        document.getElementById("pResultInfiltrates").style.padding = "0";
+        document.getElementById("resultInfiltrates").style.padding = "0";
+    }
     resultImpostor.innerHTML = playerNames[randomImpostor].toUpperCase();
 });
 
@@ -520,6 +639,9 @@ btnReset.addEventListener("click", function (event) {
     selectPlayers.style = "visibility: visible; opacity: 1; z-index: 1; transition: visibility 0.5s, opacity 0.5s linear;";
     playerNames.length = 0;
     numPlayersLast = numPlayers;
+    randomInfiltrateOne = -1;
+    randomInfiltrateTwo = -1;
+    randomInfiltrateThree = -1;
 });
 
 var btnResetWriter = document.getElementById("btnResetWriter");
@@ -529,6 +651,9 @@ btnReset.addEventListener("click", function (event) {
     playerNames.length = 0;
     playerWords.length = 0;
     numPlayersLast = numPlayers;
+    randomInfiltrateOne = -1;
+    randomInfiltrateTwo = -1;
+    randomInfiltrateThree = -1;
 });
 
 var btnReplay = document.getElementById("btnReplay");
@@ -539,6 +664,9 @@ btnReplay.addEventListener("click", function (event) {
     playerWords.length = 0;
     round++;
     numPlayersLast = numPlayers;
+    randomInfiltrateOne = -1;
+    randomInfiltrateTwo = -1;
+    randomInfiltrateThree = -1;
 });
 
 var btnExit = document.getElementById("btnExit");
@@ -548,6 +676,9 @@ btnExit.addEventListener("click", function (event) {
     playerNames.length = 0;
     playerWords.length = 0;
     round = -1;
+    randomInfiltrateOne = -1;
+    randomInfiltrateTwo = -1;
+    randomInfiltrateThree = -1;
 });
 
 var btnInstructions = document.getElementById("btnInstructions");
