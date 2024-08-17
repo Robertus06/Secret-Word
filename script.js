@@ -31,7 +31,7 @@ var wordList = ["silla", "mesa", "estantería", "lámpara", "ventilador", "botel
     "portería", "toro", "vagabundo", "tijera", "trabajo", "mina", "tierra", "sartén",
     "lluvia", "campana", "cerebro", "hada", "árbol", "trébol", "gnomo", "cubo", "zumo",
     "fotografía", "bombero", "policía", "piña", "cabaña", "candelabro", "palmera",
-    "tatuaje", "caravana", "estatua", "siesta", "graffiti", "tienda", "jarabe",
+    "tatuaje", "caravana", "estatua", "siesta", "grafiti", "tienda", "jarabe",
     "jeringuilla", "vela", "grano", "radio", "barco", "queso", "sopa", "café", "muerto",
     "corazón", "destornillador", "martillo", "gafas", "calvo", "ladrón", "buzo", "sombrero",
     "League Of Legends", "Call Of Duty", "televisión", "alarma", "obra", "sello"];
@@ -40,36 +40,33 @@ var infiltrateWordList = ["sillón", "encimera", "librería", "foco", "abanico",
     "tarta", "perrito caliente", "colín", "sartén", "consola", "piano", "puntero", "tablet",
     "televisión", "satélite", "fuego", "planeta", "helicóptero", "tren", "furgoneta", "metro", "triciclo",
     "remolque", "gorra", "altavoz", "peninsula", "río", "perro", "pantera", "leopardo", "rinoceronte",
-    
-    "dragón", "dinosaurio", "olas", "segundo", "hormiga", "letra", "cara", "mascota",
-    "perro", "gato", "pez", "hilo", "piscina", "templo", "hueso", "sombra", "cebra",
-    "caracol", "fantasma", "vampiro", "dormitorio", "cama", "pijama", "almohada",
-    "hielo", "metal", "cuadro", "pintura", "pelota", "idioma", "luz", "volante",
-    "rueda", "regla", "lapiz", "estuche", "bolígrafo", "tanque", "guerra", "cremallera",
-    "chaqueta", "abrigo", "camiseta", "pantalón", "zapato", "calcetín", "cinturón",
-    "tabaco", "cigarro", "mechero", "cubata", "fiesta", "polígono", "horóscopo", "cojín",
-    "peluche", "tomate", "nuez", "almendra", "banco", "trofeo", "medalla", "universidad",
-    "colegio", "instituto", "diploma", "videojuego", "pingüino", "memoria", "residencia",
-    "médico", "hospital", "paraguas", "escenario", "teatro", "cine", "estadio", "madre",
-    "pera", "plátano", "manzana", "furgoneta", "pie", "estómago", "vaso", "premio", "maleta",
-    "mochila", "cristal", "espejo", "copa", "pizza", "flor", "lentejas", "proyector",
-    "dentadura", "naranja", "taburete", "bebe", "ajedrez", "cuchara", "tenedor",
-    "cuchillo", "pájaro", "casa", "juguete", "pueblo", "ciudad", "músculo", "gimnasio",
-    "comedor", "hotel", "calefacción", "presidente", "carta", "tarta", "ventana",
-    "formulario", "pollo", "mar", "dinero", "moneda", "billete", "espantapájaros",
-    "monitor", "lima", "zoo", "entrenador", "oficina", "jardín", "Egipto", "España",
-    "Francia", "Italia", "Grecia", "hipopótamo", "cepillo", "esposa", "boda", "calle",
-    "bicicleta", "montaña", "bosque", "campo", "fregadero", "cola", "vestido",
-    "almeja", "cangrejo", "escritorio", "buzón", "granja", "conejo", "pluma", "vaca",
-    "gigante", "papel", "agua", "alcohol", "fanta", "nestea", "guitarra", "batería",
-    "yeti", "fifa", "fortnite", "cactus", "bombilla", "actor", "disco", "canasta",
-    "portería", "toro", "vagabundo", "tijera", "trabajo", "mina", "tierra", "sartén",
-    "lluvia", "campana", "cerebro", "hada", "árbol", "trébol", "gnomo", "cubo", "zumo",
-    "fotografía", "bombero", "policía", "piña", "cabaña", "candelabro", "palmera",
-    "tatuaje", "caravana", "estatua", "siesta", "graffiti", "tienda", "jarabe",
-    "jeringuilla", "vela", "grano", "radio", "barco", "queso", "sopa", "café", "muerto",
-    "corazón", "destornillador", "martillo", "gafas", "calvo", "ladrón", "buzo", "sombrero",
-    "League Of Legends", "Call Of Duty", "televisión", "alarma", "obra", "sello"];
+    "lagarto", "cavernicola", "cascada", "horas", "gusano", "palabra", "nariz", "amigo", "lobo", "pantera",
+    "tiburón", "aguja", "playa", "castillo", "músculo", "oscuridad", "preso", "concha", "sábana", "murcielago",
+    "salón", "tumbona", "chándal", "esponja", "plástico", "tabla", "escultura", "bolígrafo", "piedra",
+    "bandera", "lámpara", "rueda", "botas", "compás", "palo", "mochila", "cartabón", "apisonadora", "paz",
+    "botones", "camiseta", "chubasquero", "americana", "camisón", "tacones", "deportiva", "riñonera", "cocaina",
+    "porro", "hoguera", "refresco", "despedida de soltero", "taller", "constelación", "almohada", "muñeco",
+    "kétchup", "avellana", "nuez", "cajero", "copa", "premio", "colegio", "guardería", "carcel", "pergamino",
+    "juego de mesa", "pato", "cerebro", "manicomio", "mecánico", "fábrica", "embudo", "teatro",
+    "coliseo", "musical", "anfiteatro", "abuelo", "naranja", "manzana", "melón", "camión", "mano",
+    "pulmones", "jarra", "trofeo", "mochila", "maletín", "espejo", "vitrina", "taza", "panini", "hierva",
+    "judías", "reproductor", "sacamuelas", "piña", "alzador", "biberon", "parchis", "cazo", "tridente",
+    "espada", "halcón", "caja", "figura", "país", "calle", "tejido", "pilates",
+    "terraza", "motel", "horno", "palacio", "baraja", "magdalena", "puerta",
+    "examen", "ternera", "presa", "tarjeta", "ficha", "cheque", "maniquí",
+    "televisión", "cortauñas", "selva", "capitán", "despacho", "pradera", "azteca", "Barcelona",
+    "amor", "pizza", "romano", "elefante", "aspiradora", "pulsera", "fiesta", "plaza",
+    "moto", "escalada", "jungla", "terreno", "bañera", "fila", "falda",
+    "crustaceo", "langosta", "mesa", "correo", "granero", "topo", "flecha", "burro",
+    "enano", "cuaderno", "refresco", "cerveza", "zumo", "coca-cola", "bajo", "bombo",
+    "monstruo", "regate", "battle royale", "trebol", "lámpara", "humorista", "dvd", "cesta",
+    "red", "redbull", "recaudador", "punzón", "director", "cueva", "arena", "olla",
+    "nieve", "timbre", "corazón", "bruja", "arbusto", "rosa", "elfo", "contenedor", "batido",
+    "cuadro", "policía", "militar", "sandía", "tienda de campaña", "lámpara de techo", "árbol",
+    "retrato", "caseta", "fuente", "dormir", "dibujo", "local", "pastillas",
+    "pincho", "incienso", "arroz", "spotify", "moto de agua", "leche", "pure", "colacao", "esqueleto",
+    "cupido", "llave", "prensa", "gafas de buceo", "peluca", "preso", "submarino", "gorra",
+    "Smite", "Counter Strike", "ordenador", "sirena", "construcción", "pegatina"];
 
 var mainMenu = document.getElementById("mainMenu");
 var explicationClassic = document.getElementById("explicationClassic");
@@ -360,13 +357,13 @@ function createChangeBtnInfiltrate() {
 }
 
 function deleteChangeBtn() {
-    for (var i = 0; i <= 3; i++) {
+    for (var i = 0; i < 3; i++) {
         document.getElementById("wordDiv").children[wordDiv.children.length-1].remove();
     }
 }
 
 function deleteChangeBtnInfiltrate() {
-    for (var i = 0; i <= 3; i++) {
+    for (var i = 0; i < 3; i++) {
         document.getElementById("infiltrateDiv").children[infiltrateDiv.children.length-1].remove();
     }
 }
@@ -399,14 +396,18 @@ btnShowPlayer.addEventListener("click", function (event) {
         if (randomImpostor == 1 && (typeGame == 0 || typeGame == 1)) {
             if (count == 0) {
                 createChangeBtn();
+                createChangeBtnInfiltrate();
             } else if (count == 2) {
                 deleteChangeBtn();
+                deleteChangeBtnInfiltrate();
             }
         } else if (randomImpostor > 1 && (typeGame == 0 || typeGame == 1)) {
             if (count == 0) {
                 createChangeBtn();
+                createChangeBtnInfiltrate();
             } else if (count == 1) {
                 deleteChangeBtn();
+                deleteChangeBtnInfiltrate();
             }
         }
         if (count == randomInfiltrateOne || count == randomInfiltrateTwo || count == randomInfiltrateThree) {
