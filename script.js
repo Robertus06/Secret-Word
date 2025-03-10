@@ -97,7 +97,6 @@ var word;
 var infiltrateWord;
 var randomWord = 0;
 var buttonFirst = false;
-var buttonFirstInfiltrate = false;
 
 var randomImpostor = 0;
 var randomInfiltrateOne = -1;
@@ -326,7 +325,6 @@ btnConfirm.addEventListener("click", function (event) {
 
 var wordDiv = document.getElementById("wordDiv");
 function createChangeBtn() {
-    buttonFirst = true;
     const br = document.createElement("br");
     const p = document.createElement("p");
     p.innerHTML = "Como eres el primero en ver la palabra, puedes cambiarla pulsando en el botón cambiar, pero <b>disimula porque sabrán que no eres impostor y se estropeará la experiencia de juego</b>";
@@ -344,7 +342,6 @@ function createChangeBtn() {
 
 var infiltrateDiv = document.getElementById("infiltrateDiv");
 function createChangeBtnInfiltrate() {
-    buttonFirstInfiltrate = true;
     const br = document.createElement("br");
     const p = document.createElement("p");
     p.innerHTML = "Como eres el primero en ver la palabra, puedes cambiarla pulsando en el botón cambiar, pero <b>disimula porque sabrán que no eres impostor y se estropeará la experiencia de juego</b>";
@@ -361,14 +358,12 @@ function createChangeBtnInfiltrate() {
 }
 
 function deleteChangeBtn() {
-    buttonFirst = false;
     for (var i = 0; i < 3; i++) {
         document.getElementById("wordDiv").children[wordDiv.children.length-1].remove();
     }
 }
 
 function deleteChangeBtnInfiltrate() {
-    buttonFirstInfiltrate = false;
     for (var i = 0; i < 3; i++) {
         document.getElementById("infiltrateDiv").children[infiltrateDiv.children.length-1].remove();
     }
@@ -403,17 +398,21 @@ btnShowPlayer.addEventListener("click", function (event) {
             if (count == 0) {
                 createChangeBtn();
                 createChangeBtnInfiltrate();
+                buttonFirst = true;
             } else if (count == 2) {
                 deleteChangeBtn();
                 deleteChangeBtnInfiltrate();
+                buttonFirst = false;
             }
         } else if (randomImpostor > 1 && (typeGame == 0 || typeGame == 1)) {
             if (count == 0) {
                 createChangeBtn();
                 createChangeBtnInfiltrate();
+                buttonFirst = true;
             } else if (count == 1) {
                 deleteChangeBtn();
                 deleteChangeBtnInfiltrate();
+                buttonFirst = false;
             }
         }
         if (count == randomInfiltrateOne || count == randomInfiltrateTwo || count == randomInfiltrateThree) {
@@ -649,10 +648,10 @@ btnReset.addEventListener("click", function (event) {
     randomInfiltrateOne = -1;
     randomInfiltrateTwo = -1;
     randomInfiltrateThree = -1;
-    if (buttonFirst) {
+    if (buttonFirst == true) {
         deleteChangeBtn();
-    } else if (buttonFirstInfiltrate) {
         deleteChangeBtnInfiltrate();
+        buttonFirst = false;
     }
 });
 
